@@ -19,7 +19,7 @@
 
     Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
 
-    ATTENTION!: Some rules were modified for https://github.com/dbmdz group's code style. Chnages are marked with MDZ-comments.
+    ATTENTION!: Some rules were modified for https://github.com/dbmdz group's code style. Changes are marked with DBMDZ-comments.
 
 -->
 <module name = "Checker">
