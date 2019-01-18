@@ -19,6 +19,8 @@
 
     Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
 
+    ATTENTION!: Some rules were modified for https://github.com/dbmdz group's code style. Chnages are marked with MDZ-comments.
+
 -->
 <module name = "Checker">
   <!-- Force english messages, as german translation is incomprehensible -->
@@ -49,7 +51,7 @@
       <property name="allowByTailComment" value="true"/>
       <property name="allowNonPrintableEscapes" value="true"/>
     </module>
-    <module name="LineLength"> <!-- DZP Rule -->
+    <module name="LineLength"> <!-- DBMDZ Rule -->
       <property name="max" value="256"/>
       <property name="ignorePattern" value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
     </module>
@@ -136,7 +138,7 @@
       <message key="name.invalidPattern"
                      value="Method type name ''{0}'' must match pattern ''{1}''."/>
     </module>
-     <module name="ConstantName" /> <!-- DZP Rule -->
+     <module name="ConstantName" /> <!-- DBMDZ Rule -->
     <module name="NoFinalizer"/>
     <module name="GenericWhitespace">
       <message key="ws.followed"
@@ -161,7 +163,7 @@
       <property name="ignoreStatic" value="true"/>
       <property name="ignoreFinal" value="true"/>
       <property name="allowedAbbreviationLength" value="5"/>
-      <property name="allowedAbbreviations" value="XML,URL,UUID,JSONB,ISBN,ISSN,ID,ZDB,IIIF,DRM,IO,DZP,CMS,IT"/>
+      <property name="allowedAbbreviations" value="XML,URL,UUID,JSONB,ISBN,ISSN,ID,ZDB,IIIF,DRM,IO,DZP,DC,DBMDZ,CMS,IT"/> <!-- DBMDZ modified -->
     </module>
     <module name="OverloadMethodsDeclarationOrder"/>
     <module name="VariableDeclarationUsageDistance">
@@ -189,7 +191,8 @@
     <module name="NonEmptyAtclauseDescription"/>
     <module name="JavadocTagContinuationIndentation"/>
     <module name="JavadocStyle">
-      <property name="checkFirstSentence" value="false"/>     <!-- Gives too much confusion on old code -->
+      <property name="checkFirstSentence" value="false"/>     <!-- DBMDZ: Gives too much confusion on old code -->
+      <property name="checkHtml" value="false"/>     <!-- DBMDZ: Buggy (https://github.com/checkstyle/checkstyle/issues/1112): HTML-closing tags inside <pre>{@code ... }</pre> throw error "Extra HTML tag found" -->
     </module>
     <!--
     <module name="SummaryJavadocCheck">
