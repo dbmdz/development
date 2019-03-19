@@ -25,5 +25,4 @@ The following GitLab CI environment variables needs to be set:
 
 Known limitations are:
 
-* Sonar checks are currently not supported
-* Publishing snapshots or releases to Nexus are not supported
+* Publishing snapshots to Sonatype Nexus and releases to GitHub
