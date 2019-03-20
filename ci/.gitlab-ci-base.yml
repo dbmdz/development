@@ -9,6 +9,7 @@ variables:
 stages:
   - build
   - test
+  - publish
 
 cache:
   key: "$CI_COMMIT_SHA"
@@ -54,3 +55,32 @@ verify:openjdk11:
   image: "$BUILD_IMAGE_ANSIBLE_MAVEN_JDK11"
   variables:
     JAVA_HOME: "/usr/lib/jvm/java-11-openjdk-amd64"
+
+#####################
+### Stage publish ###
+#####################
+
+.publish:
+  before_script: *set_env_variables
+  dependencies:
+    - verify
+  except:
+    variables:
+      - $NO_PUBLISH
+  stage: publish
+
+publish_snapshot:
+  extends: .publish
+  only:
+    - master
+  script:
+    - if [[ ! "$PROJECT_VERSION" =~ .*SNAPSHOT ]]; then exit 0; fi
+    - mvn $MAVEN_CLI_OPTS -T 4 deploy --settings settings.xml
+
+publish_release:
+  extends: .publish
+  only:
+    - tags
+  script:
+    - if [[ "$PROJECT_VERSION" =~ .*SNAPSHOT ]]; then exit 0; fi
+    - mvn $MAVEN_CLI_OPTS -fn -T 4 deploy --settings settings.xml
