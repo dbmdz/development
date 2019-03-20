@@ -56,6 +56,13 @@ verify:openjdk11:
   variables:
     JAVA_HOME: "/usr/lib/jvm/java-11-openjdk-amd64"
 
+verifiy_codecov:
+  only:
+    variables:
+      - $CODECOV_TOKEN
+  script: bash <(curl -s https://codecov.io/bash)
+  stage: test
+
 #####################
 ### Stage publish ###
 #####################
