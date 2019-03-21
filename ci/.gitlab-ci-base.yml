@@ -10,6 +10,7 @@ stages:
   - build
   - test
   - publish
+  - release
 
 cache:
   key: "$CI_COMMIT_SHA"
@@ -91,3 +92,29 @@ publish_release:
   script:
     - if [[ "$PROJECT_VERSION" =~ .*SNAPSHOT ]]; then exit 0; fi
     - mvn $MAVEN_CLI_OPTS -fn -T 4 deploy --settings settings.xml
+
+#####################
+### Stage release ###
+#####################
+
+.release:
+  before_script: *set_env_variables
+  dependencies:
+    - publish_release
+  stage: release
+
+github_release:
+  extends: .release
+  only:
+    - tags
+  script:
+    - if [[ "$CI_COMMIT_TAG" =~ .*RC.* ]]; then exit 0; fi
+    - hub release create -m $CI_COMMIT_TAG $(find . -iname "*.jar" -exec echo -a {} \;) -t $CI_COMMIT_SHA $CI_COMMIT_TAG
+
+github_prelease:
+  extends: .release
+  only:
+    - tags
+  script:
+    - if ! [[ "$CI_COMMIT_TAG" =~ .*RC.* ]]; then exit 0; fi
+    - hub release create -m $CI_COMMIT_TAG $(find . -iname "*.jar" -exec echo -a {} \;) -p -t $CI_COMMIT_SHA $CI_COMMIT_TAG
