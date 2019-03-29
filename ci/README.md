@@ -10,7 +10,7 @@ This generic GitLab CI configuration can be included in a project-specific
 GitLab CI configuration via:
 
 ```yml
-include: "https://raw.githubusercontent.com/dbmdz/development/master/ci/gitlab-ci-base.yml"
+include: "https://raw.githubusercontent.com/dbmdz/development/master/ci/.gitlab-ci-base.yml"
 ```
 
 # Variables
