@@ -25,7 +25,7 @@ cache:
   before_script: *set_env_variables
   script:
     - echo "Compiling version $PROJECT_VERSION"
-    - mvn $MAVEN_CLI_OPTS -U clean install
+    - mvn $MAVEN_CLI_OPTS -U clean compile
   stage: build
 
 compile:
