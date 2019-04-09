@@ -57,7 +57,7 @@ verify:openjdk11:
   variables:
     JAVA_HOME: "/usr/lib/jvm/java-11-openjdk-amd64"
 
-verifiy_codecov:
+verify_codecov:
   only:
     variables:
       - $CODECOV_TOKEN
