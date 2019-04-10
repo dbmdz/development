@@ -2,6 +2,7 @@ image: "$BUILD_IMAGE_ANSIBLE_MAVEN_JDK"
 
 variables:
   MAVEN_CLI_OPTS: "--batch-mode"
+  MAVEN_ACTIVE_PROFILE: "local"
 
 .set_env_variables: &set_env_variables
   - PROJECT_VERSION=$(xmllint --xpath '/*[local-name()="project"]/*[local-name()="version"]/text()' pom.xml)
@@ -45,7 +46,7 @@ compile:openjdk11:
   dependencies:
     - compile
     - compile:openjdk11
-  script: mvn $MAVEN_CLI_OPTS verify
+  script: mvn $MAVEN_CLI_OPTS -Dspring.profiles.active=$MAVEN_ACTIVE_PROFILE verify
   stage: test
 
 verify:
