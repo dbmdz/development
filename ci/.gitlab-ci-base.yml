@@ -38,6 +38,15 @@ compile:openjdk11:
   variables:
     JAVA_HOME: "/usr/lib/jvm/java-11-openjdk-amd64"
 
+compile:openjdk11:libturbjpeg:
+  extends: .compile
+  image: "$BUILD_IMAGE_ANSIBLE_MAVEN_JDK11_LIBTURBOJPEG"
+  only:
+    variables:
+      - $WITH_LIBTURBOJPEG
+  variables:
+    JAVA_HOME: "/usr/lib/jvm/java-11-openjdk-amd64"
+
 ##################
 ### Stage test ###
 ##################
@@ -55,6 +64,15 @@ verify:
 verify:openjdk11:
   extends: .verify
   image: "$BUILD_IMAGE_ANSIBLE_MAVEN_JDK11"
+  variables:
+    JAVA_HOME: "/usr/lib/jvm/java-11-openjdk-amd64"
+
+verify:openjdk11:libturbjpeg:
+  extends: .verify
+  image: "$BUILD_IMAGE_ANSIBLE_MAVEN_JDK11_LIBTURBOJPEG"
+  only:
+    variables:
+      - $WITH_LIBTURBOJPEG
   variables:
     JAVA_HOME: "/usr/lib/jvm/java-11-openjdk-amd64"
 
