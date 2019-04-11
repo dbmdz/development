@@ -33,24 +33,23 @@ compile:
   extends: .compile
   except:
     variables:
-      - $ONLY_LIBTURBOJPEG
+      - $NO_OPENJDK8
 
 compile:openjdk11:
   extends: .compile
   image: "$BUILD_IMAGE_ANSIBLE_MAVEN_JDK11"
   except:
     variables:
-      - $ONLY_LIBTURBOJPEG
+      - $NO_OPENJDK11
   variables:
     JAVA_HOME: "/usr/lib/jvm/java-11-openjdk-amd64"
 
 compile:openjdk11:libturbjpeg:
   extends: .compile
   image: "$BUILD_IMAGE_ANSIBLE_MAVEN_JDK11_LIBTURBOJPEG"
-  only:
+  except:
     variables:
-      - $WITH_LIBTURBOJPEG
-      - $ONLY_LIBTURBOJPEG
+      - $NO_OPENJDK11_LIBTURBOJPEG
   variables:
     JAVA_HOME: "/usr/lib/jvm/java-11-openjdk-amd64"
 
@@ -69,24 +68,23 @@ verify:
   extends: .verify
   except:
     variables:
-      - $ONLY_LIBTURBOJPEG
+      - $NO_OPENJDK8
 
 verify:openjdk11:
   extends: .verify
   image: "$BUILD_IMAGE_ANSIBLE_MAVEN_JDK11"
   except:
     variables:
-      - $ONLY_LIBTURBOJPEG
+      - $NO_OPENJDK11
   variables:
     JAVA_HOME: "/usr/lib/jvm/java-11-openjdk-amd64"
 
 verify:openjdk11:libturbjpeg:
   extends: .verify
   image: "$BUILD_IMAGE_ANSIBLE_MAVEN_JDK11_LIBTURBOJPEG"
-  only:
+  except:
     variables:
-      - $WITH_LIBTURBOJPEG
-      - $ONLY_LIBTURBOJPEG
+      - $NO_OPENJDK11_LIBTURBOJPEG
   variables:
     JAVA_HOME: "/usr/lib/jvm/java-11-openjdk-amd64"
 
