@@ -165,7 +165,7 @@
       <property name="allowedAbbreviationLength" value="5"/>
       <property name="allowedAbbreviations" value="XML,URL,UUID,JSONB,ISBN,ISSN,ID,ZDB,IIIF,DRM,IO,DZP,DC,DBMDZ,CMS,IT"/> <!-- DBMDZ modified -->
     </module>
-    <module name="OverloadMethodsDeclarationOrder"/>
+    <!-- <module name="OverloadMethodsDeclarationOrder"/>-->  <!-- DBMDZ removed -->
     <module name="VariableDeclarationUsageDistance">
       <property name="allowedDistance" value="10"/>
     </module>
