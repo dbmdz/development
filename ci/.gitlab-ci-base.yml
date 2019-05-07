@@ -47,7 +47,7 @@ compile:openjdk11:
 compile:openjdk12:
   extends: .compile
   image: "$BUILD_IMAGE_ANSIBLE_MAVEN_JDK12"
-  except:
+  only:
     variables:
       - $USE_OPENJDK12
 
@@ -80,7 +80,7 @@ verify:openjdk11:
 verify:openjdk12:
   extends: .verify
   image: "$BUILD_IMAGE_ANSIBLE_MAVEN_JDK12"
-  except:
+  only:
     variables:
       - $USE_OPENJDK12
 
