@@ -44,6 +44,13 @@ compile:openjdk11:
   variables:
     JAVA_HOME: "/usr/lib/jvm/java-11-openjdk-amd64"
 
+compile:openjdk12:
+  extends: .compile
+  image: "$BUILD_IMAGE_ANSIBLE_MAVEN_JDK12"
+  except:
+    variables:
+      - $USE_OPENJDK12
+
 ##################
 ### Stage test ###
 ##################
@@ -69,6 +76,13 @@ verify:openjdk11:
       - $NO_OPENJDK11
   variables:
     JAVA_HOME: "/usr/lib/jvm/java-11-openjdk-amd64"
+
+verify:openjdk12:
+  extends: .verify
+  image: "$BUILD_IMAGE_ANSIBLE_MAVEN_JDK12"
+  except:
+    variables:
+      - $USE_OPENJDK12
 
 verify_codecov:
   only:
