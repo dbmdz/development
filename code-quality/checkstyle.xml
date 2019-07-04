@@ -41,10 +41,6 @@
   <module name="SuppressWarningsFilter" />
 
   <module name="TreeWalker">
-    <module name="SuppressionCommentFilter">
-      <property name="offCommentFormat" value="CHECKSTYLE\:OFF"/>
-      <property name="onCommentFormat" value="CHECKSTYLE\:ON"/>
-    </module>
     <module name="SuppressWarningsHolder" />
     <module name="OuterTypeFilename"/>
     <module name="IllegalTokenText">
