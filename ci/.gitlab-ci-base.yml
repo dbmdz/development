@@ -41,8 +41,6 @@ compile:openjdk11:
   except:
     variables:
       - $NO_OPENJDK11
-  variables:
-    JAVA_HOME: "/usr/lib/jvm/java-11-openjdk-amd64"
 
 compile:openjdk12:
   extends: .compile
@@ -74,8 +72,6 @@ verify:openjdk11:
   except:
     variables:
       - $NO_OPENJDK11
-  variables:
-    JAVA_HOME: "/usr/lib/jvm/java-11-openjdk-amd64"
 
 verify:openjdk12:
   extends: .verify
