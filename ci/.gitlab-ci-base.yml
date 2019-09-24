@@ -98,6 +98,7 @@ verify_codecov:
   except:
     variables:
       - $NO_PUBLISH
+  image: "$BUILD_IMAGE_ANSIBLE_MAVEN_JDK11"
   stage: publish
 
 publish_snapshot:
