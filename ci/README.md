@@ -36,3 +36,6 @@ Each repository should define the following variables:
 
 If the environment variable `NO_PUBLISH` is set, then deploying artifacts to
 Sonatype is disabled.
+
+If the environment variable `NO_RELEASE` is set, then uploading artifacts to
+GitHub is disabled.
