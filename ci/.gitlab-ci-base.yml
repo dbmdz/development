@@ -105,6 +105,7 @@ publish_snapshot:
   extends: .publish
   only:
     - master
+    - main
   script:
     - if [[ ! "$PROJECT_VERSION" =~ .*SNAPSHOT ]]; then exit 0; fi
     - mvn $MAVEN_CLI_OPTS -T 4 deploy -DskipTests --settings settings.xml
