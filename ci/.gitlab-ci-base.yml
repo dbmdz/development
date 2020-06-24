@@ -104,8 +104,8 @@ verify_codecov:
 publish_snapshot:
   extends: .publish
   only:
-    - master
     - main
+    - master
   script:
     - if [[ ! "$PROJECT_VERSION" =~ .*SNAPSHOT ]]; then exit 0; fi
     - mvn $MAVEN_CLI_OPTS -T 4 deploy -DskipTests --settings settings.xml
